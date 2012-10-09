@@ -1,0 +1,21 @@
+# Logstash
+#
+
+description     "Logstash"
+
+start on virtual-filesystems
+stop on runlevel [06]
+
+respawn
+respawn limit 5 30
+
+env SINCEDB_PATH=/opt/logstash
+#env JAVA_OPTS='-Xms512m -Xmx512m'
+chdir /opt/logstash
+#setuid logstash
+#setgid adm
+console log
+
+script
+        exec java -Des.path.data=/opt/logstash/data -Des.index.store.compress.stored=true -jar <%= logstash_jar_path %> agent -f /etc/logstash/conf.d --log /var/log/logstash.log 
+end script

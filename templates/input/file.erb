@@ -1,0 +1,14 @@
+input {
+
+  file {
+    type => "<%=logstash_type%>"
+    path => "<%=path%>"
+    <% if @logstash_tags %>
+    tags => <%=@logstash_tags%>
+    <% end %>
+    <% if @fields %>
+    add_field => <%=@fields%>
+    <% end %>
+  }
+  
+}

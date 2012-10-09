@@ -1,0 +1,9 @@
+[Unit]
+Description=Logstash
+
+[Service]
+Environment=SINCEDB_PATH=/opt/logstash
+ExecStart=/usr/bin/java -Des.path.data=/opt/logstash/data -Des.index.store.compress.stored=true -jar <%= logstash_jar_path %> agent -f /etc/logstash/conf.d --log /var/log/logstash
+
+[Install]
+WantedBy=multi-user.target

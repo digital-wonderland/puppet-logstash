@@ -1,0 +1,9 @@
+output {
+
+  elasticsearch {
+    <% if embedded == true %>
+  	embedded => true
+    <% end -%>
+  }
+  
+}

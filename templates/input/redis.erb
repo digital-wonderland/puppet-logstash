@@ -1,0 +1,10 @@
+input {
+
+  redis {
+	host => "<%=host%>"
+	data_type => "list"
+	key => "<%=key%>"
+	message_format => "json_event"
+  }
+  
+}
